@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# No indexar rutas internas/sensibles
+Disallow: /config/
+Disallow: /contacto/enviar.php
+Disallow: /vendor/
+Disallow: /cgi-bin/
+Disallow: /tools/
+
+Sitemap: https://c49.cl/sitemap.xml
+
+
+

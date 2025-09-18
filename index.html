@@ -1,0 +1,1724 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FranjaWood | Sofás y Comedores a Medida en Santiago – Fábrica y Tapicería</title>
+  <meta name="description"
+    content="Landing informativa inspirada en Contrive: Servicios, Nosotros, Resultados, Diferenciadores, Clientes, Testimonios, Blog, Contacto y Ubicación. FranjaWood fabrica sofás, sillones y comedores a medida en Santiago con despacho nacional." />
+  <link rel="canonical" href="https://www.franjawood.cl/" />
+  <meta name="theme-color" content="#0f0f0f" />
+
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FranjaWood | Sofás y Comedores a Medida" />
+  <meta property="og:description"
+    content="Fábrica propia en Santiago. Medidas personalizadas, tapices premium, resultados reales y despacho a todo Chile." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=FranjaWood" />
+
+  <!-- UI -->
+   <link rel="icon" type="image/png" href="/img/logo-franjawood.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #7a5c3e;
+      --muted: #6b6b6b;
+      --wood: #7a5c3e;
+      --paper: #f7f4f0;
+      --accent: #b87333;
+      --line: rgba(0, 0, 0, .06)
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ===== Navbar glass + fade-in ===== */
+    .navbar {
+      backdrop-filter: saturate(180%) blur(10px);
+      background: rgba(255, 255, 255, .75);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      animation: navfade .6s ease .2s both;
+    }
+
+    @keyframes navfade {
+      from {
+        opacity: 0;
+        transform: translateY(-6px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .06)
+    }
+
+    .btn-accent {
+      background: var(--wood);
+      border-color: var(--wood)
+    }
+
+    .btn-accent:hover {
+      background: #6a4f35;
+      border-color: #6a4f35
+    }
+
+    /* ===== HERO (fullscreen + Ken Burns) ===== */
+    .hero-slider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-slider .carousel,
+    .hero-slider .carousel-inner,
+    .hero-slider .carousel-item {
+      overflow: hidden;
+      contain: paint;
+    }
+
+    /* >>> Alto completo y más “zoom” por defecto */
+    .hero-slider .carousel-item {
+      min-height: 86vh;
+      /* antes: 86vh */
+
+    }
+
+    /* En móvil ocupa pantalla real (sin barras) */
+    @media (max-width:576px) {
+      .hero-slider .carousel-item {
+        min-height: 100svh;
+      }
+    }
+
+    @supports (min-height:100dvh) {
+      @media (max-width:576px) {
+        .hero-slider .carousel-item {
+          min-height: 92svh;
+        }
+
+        /* o 100svh si prefieres */
+        .hero-bg {
+          transform: scale(1.04);
+        }
+
+        .carousel-item.active .hero-bg {
+          transform: scale(1.10);
+        }
+      }
+    }
+
+    /* Capa de imagen que hace el zoom (siempre cover) */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform: scale(1.06);
+      /* antes: 1.04 */
+      transition: transform 16s ease-in-out;
+      /* zoom suave */
+      will-change: transform;
+    }
+
+    .carousel-item.active .hero-bg {
+      transform: scale(1.14);
+      /* antes: 1.10 */
+    }
+
+    /* Presets de foco/encuadre por slide (úsalos como clase extra en <span class="hero-bg ...">) */
+    .focus-center {
+      background-position: 50% 50%;
+    }
+
+    .focus-top {
+      background-position: 50% 30%;
+    }
+
+    .focus-bottom {
+      background-position: 50% 70%;
+    }
+
+    .focus-left {
+      background-position: 30% 50%;
+    }
+
+    .focus-right {
+      background-position: 70% 50%;
+    }
+
+    /* Overlay más suave para no “apagar” la foto */
+    .hero-slider .carousel-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .18));
+      /* antes .45/.25 */
+    }
+
+    .hero-slider .content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .hero-slider .badge-soft {
+      background: rgba(255, 255, 255, .18);
+      color: #fff
+    }
+
+    .hero-slider .btn-outline-light:hover {
+      background: #fff;
+      color: #000
+    }
+
+    /* Indicadores dentro del slide */
+    .hero-slider .carousel-indicators [data-bs-target] {
+      width: 28px;
+      height: 4px;
+      border-radius: 4px;
+    }
+
+    @media (max-width:576px) {
+      .hero-slider .carousel-indicators {
+        position: absolute;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+      }
+
+      .hero-slider .container.py-8 {
+        padding-top: 56px !important;
+        padding-bottom: 56px !important;
+      }
+
+      .hero-slider h1 {
+        font-size: 1.75rem
+      }
+    }
+
+    /* ===== Blobs decorativos ===== */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: .18;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    .blob.b1 {
+      width: 420px;
+      height: 420px;
+      background: #e9d9c9;
+      top: -60px;
+      left: -60px;
+      animation: floatY 14s ease-in-out infinite
+    }
+
+    .blob.b2 {
+      width: 340px;
+      height: 340px;
+      background: #ffe3c8;
+      bottom: -70px;
+      right: -70px;
+      animation: floatY 18s ease-in-out infinite reverse
+    }
+
+    @keyframes floatY {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(26px)
+      }
+    }
+
+    /* ===== Under-hero feature strip ===== */
+    .feature {
+      border: 1px solid var(--line)
+    }
+
+    /* ===== Animaciones on-scroll ===== */
+    [data-ani] {
+      opacity: 0;
+      transform: translateY(16px)
+    }
+
+    [data-ani].in {
+      opacity: 1;
+      transform: none;
+      transition: all .7s cubic-bezier(.2, .6, .2, 1)
+    }
+
+    [data-ani="left"] {
+      transform: translateX(-20px)
+    }
+
+    [data-ani="right"] {
+      transform: translateX(20px)
+    }
+
+    [data-ani="zoom"] {
+      transform: scale(.96)
+    }
+
+    /* ===== Portfolio / Resultados ===== */
+    .grid {
+      display: grid;
+      gap: 14px
+    }
+
+    @media(min-width:768px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      transition: transform .28s ease, box-shadow .28s ease
+    }
+
+    .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform .6s ease
+    }
+
+    .tile .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, .55), transparent);
+      opacity: 0;
+      transition: opacity .35s ease
+    }
+
+    .tile .caption {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      color: #fff;
+      font-weight: 600
+    }
+
+    .tile:hover {
+      transform: translateY(-4px)
+    }
+
+    .tile:hover img {
+      transform: scale(1.08)
+    }
+
+    .tile:hover .overlay {
+      opacity: 1
+    }
+
+    /* ===== Cards y botones ===== */
+    .soft,
+    .diff-card,
+    .feature,
+    .btn {
+      transition: transform .28s ease, box-shadow .28s ease, opacity .28s
+    }
+
+    .btn:hover {
+      transform: translateY(-1px)
+    }
+
+    .soft:hover {
+      box-shadow: 0 16px 44px rgba(0, 0, 0, .10)
+    }
+
+    .diff-card {
+      background: #fff;
+      border: 1px solid var(--line)
+    }
+
+    .diff-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .08)
+    }
+
+    .badge-soft {
+      background: rgba(186, 135, 92, .12);
+      color: var(--wood)
+    }
+
+    .soft {
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .08)
+    }
+
+    .rounded-5 {
+      border-radius: 1.25rem
+    }
+
+    .text-accent {
+      color: var(--accent)
+    }
+
+    .bg-paper {
+      background: var(--paper)
+    }
+
+    /* ===== Métricas ===== */
+    .metric {
+      transform: translateY(14px);
+      opacity: 0;
+      transition: all .6s cubic-bezier(.2, .6, .2, 1)
+    }
+
+    .metric.in {
+      transform: none;
+      opacity: 1
+    }
+
+    .metric.in h3 {
+      animation: pop .5s ease-out both
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(.9);
+        opacity: .6
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    /* ===== Marquee ===== */
+    .marquee {
+      overflow: hidden
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 64px;
+      align-items: center;
+      animation: mar 18s linear infinite
+    }
+
+    .marquee:hover .marquee-track {
+      animation-play-state: paused
+    }
+
+    @keyframes mar {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--paper)
+    }
+
+    /* ===== Helpers ===== */
+    .py-6 {
+      padding-top: 6.5rem;
+      padding-bottom: 6.5rem
+    }
+
+    .py-7 {
+      padding-top: 6rem;
+      padding-bottom: 6rem
+    }
+
+    .py-8 {
+      padding-top: 8rem;
+      padding-bottom: 8rem
+    }
+
+    /* ===== Media: Nosotros ===== */
+    .media-xl {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .08)
+    }
+
+    .media-xl img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    @media (min-width:992px) {
+      .media-xl {
+        height: 420px
+      }
+    }
+
+    @media (min-width:1200px) {
+      .media-xl {
+        height: 520px
+      }
+    }
+
+    @media (min-width:1400px) {
+      .media-xl {
+        height: 600px
+      }
+    }
+
+    /* ===== Typewriter (solo primera frase) ===== */
+    .typewriter {
+      --caret: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--caret);
+      animation: caret .9s step-end infinite
+    }
+
+    @keyframes caret {
+      50% {
+        border-color: transparent
+      }
+    }
+
+    /* ===== Accesibilidad: menos movimiento ===== */
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+
+      .whatsapp-fab::after {
+        box-shadow: none !important;
+      }
+    }
+
+    /* ===== FAB WhatsApp ===== */
+    .whatsapp-float {
+      position: fixed;
+      right: calc(30px + env(safe-area-inset-right));
+      bottom: calc(30px + env(safe-area-inset-bottom));
+      z-index: 1030;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .whatsapp-fab {
+      display: grid;
+      place-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #25D366, #1ebe57);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .18), 0 4px 10px rgba(0, 0, 0, .10);
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      position: relative;
+    }
+
+    .whatsapp-fab .bi-whatsapp {
+      font-size: 1.65rem;
+      line-height: 1;
+    }
+
+    .whatsapp-fab::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: inherit;
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, .35);
+      transition: box-shadow .35s ease;
+    }
+
+    .whatsapp-fab:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, .22), 0 6px 14px rgba(0, 0, 0, .12);
+      filter: saturate(1.1);
+    }
+
+    .whatsapp-fab:hover::after {
+      box-shadow: 0 0 0 10px rgba(37, 211, 102, .18);
+    }
+
+    .whatsapp-fab:active {
+      transform: translateY(0);
+    }
+
+    .fab-label {
+      background: #0f0f0f;
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: .5rem .75rem;
+      border-radius: 9999px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .18);
+      user-select: none;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(6px);
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+    }
+
+    .whatsapp-float:hover .fab-label,
+    .whatsapp-fab:focus-visible+.fab-label {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width:420px) {
+      .whatsapp-fab {
+        width: 56px;
+        height: 56px
+      }
+
+      .fab-label {
+        display: none
+      }
+    }
+
+    /* ==== Evitar “ensanchamientos” en el hero ==== */
+    .container,
+    .row,
+    [class*="col-"] {
+      overflow-x: clip;
+    }
+
+    html,
+    body {
+      overflow-x: clip;
+    }
+
+    /* ===== Ajuste de zoom en móviles (opcional) ===== */
+    @media (max-width:576px) {
+      .hero-bg {
+        transform: scale(1.08);
+      }
+
+      .carousel-item.active .hero-bg {
+        transform: scale(1.18);
+      }
+    }
+
+    .metric {
+      transform: translateY(14px);
+      opacity: 0;
+      transition: all .6s cubic-bezier(.2, .6, .2, 1);
+    }
+
+    .metric.in {
+      transform: none;
+      opacity: 1;
+    }
+
+    .metric.in h3 {
+      animation: pop .5s ease-out both;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(.9);
+        opacity: .6
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+    .rating-stars{
+  white-space: nowrap;  /* evita quiebres entre las estrellas */
+  gap: .15rem;          /* separa suavemente los íconos */
+  font-size: 1rem;      /* ajusta si necesitas más chico en móvil */
+}
+.text-warning .bi-star-fill,
+.rating-stars .bi-star-fill{
+  color: #ffc107;       /* mismo tono de 'text-warning' para consistencia */
+}
+.client-grid{
+  display:grid;
+  gap:1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width:768px){ .client-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (min-width:1200px){ .client-grid{ grid-template-columns: repeat(3,1fr); } }
+
+.client-card{
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+  border-radius:1rem; overflow:hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.04);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.client-card:hover{ transform: translateY(-3px); box-shadow:0 10px 30px rgba(0,0,0,.08); }
+
+.client-head{ display:flex; align-items:center; gap:.75rem; padding:1rem 1rem .5rem; }
+.client-avatar{
+  width:44px; height:44px; border-radius:50%; object-fit:cover; background:#eee; flex:0 0 44px;
+}
+.client-avatar.initials{
+  display:flex; align-items:center; justify-content:center; font-weight:600; color:#444;
+}
+.client-name{ font-weight:600; line-height:1.1; }
+.client-meta{ font-size:.85rem; color:#6c757d; display:flex; align-items:center; gap:.5rem; flex-wrap:wrap }
+.client-meta a{ color:inherit; text-decoration:underline dotted; }
+.client-meta .dot{ width:4px; height:4px; border-radius:50%; background:#bbb; display:inline-block }
+
+.client-media{ margin:0; }
+.client-media img{ width:100%; height:220px; object-fit:cover; display:block }
+.client-media figcaption{ font-size:.85rem; color:#6c757d; padding:.5rem 1rem; }
+
+.client-tags{ display:flex; gap:.5rem; padding:0 1rem 1rem; flex-wrap:wrap }
+.badge-soft{
+  font-size:.75rem; padding:.25rem .6rem; border-radius:999px;
+  background:rgba(255,122,0,.08); color:#A45100; border:1px solid rgba(255,122,0,.2);
+}
+/* ===== Paleta FranjaWood (extraída del logo/madera) ===== */
+.fw-colors{
+  --fw-bg: #2f231a;      /* madera oscura */
+  --fw-text: #efe2d0;    /* beige/crema */
+  --fw-accent: #9c6b3b;  /* café cobrizo del emblema */
+  --fw-accent-2: #c29a6b;/* tono claro para bordes */
+  --fw-badge-bg: rgba(156,107,59,.16);
+}
+
+.fw-strip{
+  background: var(--fw-bg);
+  color: var(--fw-text);
+}
+
+.fw-lema strong{ color: var(--fw-accent-2); }
+
+/* Badges en tono madera con borde sutil */
+.fw-badge{
+  display:inline-block;
+  padding:.35rem .7rem;
+  border-radius:999px;
+  background: var(--fw-badge-bg);
+  color: var(--fw-text);
+  border:1px solid rgba(194,154,107,.35);
+  letter-spacing:.2px;
+}
+
+/* Detalle opcional: sutil textura/gradiente como madera */
+.fw-strip{
+  position:relative;
+  isolation:isolate;
+  background-image:
+    radial-gradient(1200px 50% at 10% 0%, rgba(255,255,255,.05), transparent 60%),
+    radial-gradient(1200px 60% at 90% 100%, rgba(0,0,0,.25), transparent 60%);
+  background-blend-mode: overlay;
+}
+
+/* Footer FranjaWood */
+.fw-footer{
+  background: #2f231a;            /* madera oscura */
+  color: #efe2d0;                  /* crema */
+}
+.fw-footer .text-light{ color:#efe2d0!important; }
+.fw-footer .text-footer{ color: rgba(239,226,208,.8); }
+.fw-footer .link-footer{
+  color: rgba(239,226,208,.9);
+  text-decoration: none;
+}
+.fw-footer .link-footer:hover{ color:#c29a6b; text-decoration: underline; }
+.fw-footer .border-footer{ border-color: rgba(239,226,208,.15) !important; }
+.fw-footer .shadow-soft{ box-shadow: 0 10px 28px rgba(0,0,0,.18); }
+/* Logo en la barra */
+.logo-nav{
+  width: 60px; height: 60px;
+  border-radius: 50%;        /* tu logo es circular */
+  object-fit: cover;
+  display: block;
+}
+
+/* un pelín más chico en pantallas muy chicas */
+@media (max-width: 420px){
+  .logo-nav{ width: 55px; height: 55px; }
+}
+
+  </style>
+
+
+
+  <!-- JSON-LD LocalBusiness + FAQ for SEO -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"FranjaWood","image":"https://via.placeholder.com/1200x630.png?text=FranjaWood","telephone":"+56987654321","address":{"@type":"PostalAddress","addressLocality":"Santiago","addressCountry":"CL"},"url":"https://www.franjawood.cl","sameAs":["https://www.instagram.com/franjawood.cl/"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"¿Fabrican sofás y comedores a medida?","acceptedAnswer":{"@type":"Answer","text":"Sí, diseñamos y fabricamos en Santiago. Personalizamos medidas, tapices y terminaciones."}},
+    {"@type":"Question","name":"¿Hacen despachos a regiones?","acceptedAnswer":{"@type":"Answer","text":"Sí, coordinamos despacho a todo Chile con embalaje seguro."}},
+    {"@type":"Question","name":"¿Cuál es el plazo habitual de entrega?","acceptedAnswer":{"@type":"Answer","text":"Según complejidad, entre 7 y 15 días hábiles."}}
+  ]}
+  </script>
+</head>
+
+<body>
+ 
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+     <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#inicio">
+  <img src="img/logo-franjawood.png" alt="FranjaWood" class="logo-nav" width="36" height="36">
+  <span>Franja<b style="color:var(--wood)">Wood</b></span>
+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-semibold">
+          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resultados">Resultados</a></li>
+          <li class="nav-item"><a class="nav-link" href="#diferenciadores">Diferenciadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clientes">Clientes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="ms-lg-3 d-none d-lg-block">
+          <a class="btn btn-accent btn-sm text-white"
+            href="https://wa.me/56987654321?text=Hola%20FranjaWood%2C%20quiero%20cotizar" target="_blank"
+            rel="noopener"><i class="bi bi-whatsapp me-1"></i>WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SLIDER -->
+  <header id="inicio" class="hero-slider">
+    <div id="hero" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#hero" data-bs-slide-to="0" class="active" aria-label="Sofás"></button>
+        <button type="button" data-bs-target="#hero" data-bs-slide-to="1" aria-label="Comedores"></button>
+        <button type="button" data-bs-target="#hero" data-bs-slide-to="2" aria-label="Muebles"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <!-- SLIDE 1 -->
+        <div class="carousel-item active">
+          <span class="hero-bg focus-center-md" style="background-image:url('img/sofa-verde.jpg')"></span>
+
+          <div class="container py-8">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-7 content" data-ani="left">
+                <span class="badge badge-soft rounded-pill mb-3">Directo de fábrica</span>
+                <h1 class="display-5 fw-bold lh-sm mb-3">
+                  <span id="hero-title-1" class="typewriter"></span>
+                </h1>
+                <p class="lead mb-4">Estructura sólida, espumas HD y tapices premium. Diseñados para tu espacio.</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-light text-dark" href="#servicios"><i class="bi bi-grid-3x3-gap me-2"></i>Ver
+                    servicios</a>
+                  <a class="btn btn-outline-light" href="#contacto"><i class="bi bi-send me-2"></i>Cotizar ahora</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="carousel-item">
+          <span class="hero-bg" style="background-image:url('img/hero-comedor.jpg')"></span>
+          <div class="container py-8">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-7 content" data-ani="right">
+                <span class="badge badge-soft rounded-pill mb-3">Maderas seleccionadas</span>
+                <h1 class="display-5 fw-bold lh-sm mb-3">Mesas y comedores a medida</h1>
+                <p class="lead mb-4">Nogal, roble y más. Acabados duraderos y sillas tapizadas a juego.</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-light text-dark" href="#servicios">Ver servicios</a>
+                  <a class="btn btn-outline-light" href="#contacto">Cotizar ahora</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="carousel-item">
+          <span class="hero-bg" style="background-image:url('img/hero-muebles.jpg')"></span>
+          <div class="container py-8">
+            <div class="row align-items-center g-4">
+              <div class="col-lg-7 content" data-ani>
+                <span class="badge badge-soft rounded-pill mb-3">Hecho a medida</span>
+                <h1 class="display-5 fw-bold lh-sm mb-3">Muebles & tapicería personalizada</h1>
+                <p class="lead mb-4">Sillones, butacas y renovaciones con garantía y despacho a todo Chile.</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-light text-dark" href="#servicios">Ver servicios</a>
+                  <a class="btn btn-outline-light" href="#contacto">Cotizar ahora</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span><span
+          class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- Feature strip debajo del slider -->
+    <div class="container">
+      <div class="row g-4 mt-4">
+        <div class="col-md-4" data-ani="zoom">
+          <div class="feature d-flex align-items-start gap-3 p-4 rounded-5 h-100">
+            <i class="bi bi-rulers fs-3 text-accent"></i>
+            <div>
+              <h3 class="h6 m-0">Medidas personalizadas</h3>
+              <p class="small text-muted m-0">L, U o rectos; mesas a tu espacio.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-ani="zoom">
+          <div class="feature d-flex align-items-start gap-3 p-4 rounded-5 h-100">
+            <i class="bi bi-layers fs-3 text-accent"></i>
+            <div>
+              <h3 class="h6 m-0">Tapices premium</h3>
+              <p class="small text-muted m-0">Bouclé, lino, velvet y asesoría de color.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-ani="zoom">
+          <div class="feature d-flex align-items-start gap-3 p-4 rounded-5 h-100">
+            <i class="bi bi-award fs-3 text-accent"></i>
+            <div>
+              <h3 class="h6 m-0">Garantía & despacho</h3>
+              <p class="small text-muted m-0">12 meses y cobertura nacional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blobs decorativos -->
+    <div class="blob b1 d-none d-md-block"></div>
+    <div class="blob b2 d-none d-md-block"></div>
+  </header>
+
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-6" itemscope itemtype="https://schema.org/Service">
+    <div class="container">
+      <div class="row align-items-end mb-4">
+        <div class="col-lg-8" data-ani>
+          <h2 class="fw-bold mb-0">Servicios</h2>
+          <p class="text-muted m-0">Fabricación y tapicería a medida</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-ani="left">
+          <div class="p-4 rounded-5 soft h-100">
+            <div class="ratio ratio-4x3 rounded-4 overflow-hidden mb-3">
+              <img src="img/sofas.jpg" alt="Sofás y seccionales a medida" loading="lazy">
+            </div>
+            <h3 class="h5 fw-semibold" itemprop="name">Sofás & Seccionales</h3>
+            <p class="small text-muted" itemprop="description">Modelos en L, U o rectos. Estructura sólida, espumas HD y
+              tapices premium.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-ani="right">
+          <div class="p-4 rounded-5 soft h-100">
+            <div class="ratio ratio-4x3 rounded-4 overflow-hidden mb-3">
+              <img src="img/comedores.jpg" alt="Mesas y comedores a medida" loading="lazy">
+            </div>
+            <h3 class="h5 fw-semibold">Comedores & Mesas</h3>
+            <p class="small text-muted">Cubiertas en maderas seleccionadas y sillas tapizadas a juego.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-ani="left">
+          <div class="p-4 rounded-5 soft h-100">
+            <div class="ratio ratio-4x3 rounded-4 overflow-hidden mb-3">
+              <img src="img/sillones.jpg" alt="Sillones y butacas" loading="lazy">
+            </div>
+            <h3 class="h5 fw-semibold">Sillones & Butacas</h3>
+            <p class="small text-muted">Piezas statement para living, dormitorio u oficina.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-ani="right">
+          <div class="p-4 rounded-5 soft h-100">
+            <div class="ratio ratio-4x3 rounded-4 overflow-hidden mb-3">
+              <img src="img/tapiceria.jpg" alt="Tapicería y renovación" loading="lazy">
+            </div>
+            <h3 class="h5 fw-semibold">Tapicería & Renovación</h3>
+            <p class="small text-muted">Retapizado, ajuste de espumas y refuerzo estructural.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="py-6 bg-paper">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5" data-ani>
+          <span class="badge badge-soft rounded-pill mb-2">Hecho a medida</span>
+          <span class="badge bg-dark rounded-pill mb-3">30+ años de experiencia</span>
+
+          <h2 class="fw-bold mb-2">Fábrica propia con foco en calidad</h2>
+          <p class="text-muted mb-3">
+            Desde hace más de tres décadas fabricamos sofás, seccionales y comedores que duran y se ven increíbles.
+            Somos especialistas en proporciones, espumas de alta densidad y terminaciones premium.
+          </p>
+
+          <div class="mb-3 small text-accent fw-semibold">¿Por qué FranjaWood?</div>
+          <ul class="list-unstyled m-0 small">
+            <li class="mb-2"><i class="bi bi-check2-circle text-accent me-2"></i>
+              <b>Los mejores en lo nuestro:</b> diseño inteligente + construcción sólida.
+            </li>
+            <li class="mb-2"><i class="bi bi-check2-circle text-accent me-2"></i>
+              <b>Asesoría experta por WhatsApp</b> para elegir medidas, telas y colores.
+            </li>
+            <li class="mb-2"><i class="bi bi-check2-circle text-accent me-2"></i>
+              <b>Garantía 12 meses</b> y servicio postventa real.
+            </li>
+            <li class="mb-2"><i class="bi bi-check2-circle text-accent me-2"></i>
+              <b>Despacho a todo Chile</b> con embalaje seguro.
+            </li>
+          </ul>
+
+          <!-- Mini prueba social -->
+          <div class="d-flex align-items-center gap-3 mt-3 small">
+            <span class="rating-stars d-inline-flex align-items-center lh-1 flex-shrink-0" aria-label="5 estrellas">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </span>
+            <span class="text-muted">Clientes felices en Santiago y regiones</span>
+          </div>
+        </div>
+
+        <div class="col-lg-7" data-ani="right">
+          <div class="media-xl">
+            <img src="img/taller.jpg" alt="Taller de tapicería en Santiago" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- RESULTADOS -->
+  <!-- Sección existente (sin cambios obligatorios) -->
+  <section id="resultados" class="py-6">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col" data-ani>
+          <h2 class="fw-bold">Resultados reales</h2>
+          <p class="text-muted">Ambientes reales, texturas y detalles. Basado en Instagram.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="tile" href="#" data-ani>
+          <img src="img/sillon_michelin.jpg" alt="Seccional bouclé blanco" loading="lazy"
+            data-full="img/sillon_michelin.jpg">
+          <span class="overlay"></span><span class="caption">Seccional bouclé</span>
+        </a>
+        <a class="tile" href="#" data-ani>
+          <img src="img/comedor_nogal.jpg" alt="Comedor madera nogal" loading="lazy">
+          <span class="overlay"></span><span class="caption">Comedor nogal</span>
+        </a>
+        <a class="tile" href="#" data-ani>
+          <img src="img/mesita.jpg" alt="mesita de centro" loading="lazy">
+          <span class="overlay"></span><span class="caption">mesita de centro</span>
+        </a>
+        <a class="tile" href="#" data-ani>
+          <img src="img/sofa3.jpg" alt="Sofá 3 cuerpos" loading="lazy">
+          <span class="overlay"></span><span class="caption">Sofá 3 cuerpos</span>
+        </a>
+        <a class="tile" href="#" data-ani>
+          <img src="img/tallerycostura.jpg" alt="Taller y costuras" loading="lazy">
+          <span class="overlay"></span><span class="caption">Taller & costuras</span>
+        </a>
+        <a class="tile" href="#" data-ani>
+          <img src="img/detallemadera.jpg" alt="Detalles madera" loading="lazy">
+          <span class="overlay"></span><span class="caption">Detalles madera</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal reutilizable -->
+  <div class="modal fade" id="resultadoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="resultadoTitulo"></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body p-0">
+          <img id="resultadoImg" src="" alt="" style="width:100%; height:70vh; object-fit:contain;">
+        </div>
+        <div class="modal-footer border-0 justify-content-between">
+          <small class="text-muted" id="resultadoAlt"></small>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-6 bg-paper">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-6 col-lg-3">
+          <div class="metric">
+            <!-- cuenta hasta 1200 en 1.2s -->
+            <h3 class="fw-bolder" data-count="1200" data-duration="1200">0</h3>
+            <p class="text-muted small m-0">Proyectos entregados</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="metric">
+            <!-- cuenta 0 → 4.9 en 1s con 1 decimal -->
+            <h3 class="fw-bolder" data-count="4.9" data-decimals="1" data-duration="1000">0</h3>
+            <p class="text-muted small m-0">Satisfacción clientes</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="metric">
+            <!-- 0 → 15 en 1s -->
+            <h3 class="fw-bolder" data-count="15" data-duration="1000">0</h3>
+            <p class="text-muted small m-0">Días promedio</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="metric">
+            <!-- 0 → 26K (sufijo K) en 1s -->
+            <h3 class="fw-bolder" data-count="26" data-suffix="K" data-duration="1000">0K</h3>
+            <p class="text-muted small m-0">Comunidad en IG</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DIFERENCIADORES -->
+  <section id="diferenciadores" class="py-6">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col" data-ani>
+          <h2 class="fw-bold">¿Por qué elegirnos?</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-ani="left">
+          <div class="p-4 rounded-5 diff-card h-100"><i class="bi bi-award me-2 text-accent"></i>Garantía real 12 meses
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-ani="right">
+          <div class="p-4 rounded-5 diff-card h-100"><i class="bi bi-truck me-2 text-accent"></i>Despacho nacional</div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-ani="left">
+          <div class="p-4 rounded-5 diff-card h-100"><i class="bi bi-chat-dots me-2 text-accent"></i>Asesoría
+            personalizada</div>
+        </div>
+        <div class="col-md-6 col-lg-3" data-ani="right">
+          <div class="p-4 rounded-5 diff-card h-100"><i class="bi bi-clipboard-check me-2 text-accent"></i>Control de
+            calidad 3 etapas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- CLIENTES (reales) -->
+<section id="clientes" class="py-6 bg-paper">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col" data-ani>
+        <h2 class="fw-bold m-0">Clientes</h2>
+        <p class="text-muted mb-0">Personas y negocios que ya confiaron en FranjaWood.</p>
+      </div>
+    </div>
+
+    <div class="client-grid">
+      <!-- Cliente 1 -->
+      <article class="client-card" data-ani>
+     <header class="client-head">
+          <div class="client-avatar initials">LS</div>
+          <div>
+            <div class="client-name">Danitza</div>
+            <div class="client-meta">
+              <a href="https://www.instagram.com/danitza799/" target="_blank" rel="noopener">@danitza799</a>
+              <span class="dot"></span><span>Santiago</span>
+            </div>
+          </div>
+        </header>
+        <figure class="client-media">
+          <img src="img/angol_sillones.jpg" alt="Juego de sillones blancos en living" loading="lazy">
+          <figcaption>Sillones 3C x 2 · lino off-white</figcaption>
+        </figure>
+        <footer class="client-tags">
+          <span class="badge-soft">Residencial</span>
+          <span class="badge-soft">Entrega</span>
+        </footer>
+      </article>
+
+      <!-- Cliente 2 -->
+      <article class="client-card" data-ani>
+        <header class="client-head">
+          <div class="client-avatar initials">LS</div>
+          <div>
+            <div class="client-name">Leo Style</div>
+            <div class="client-meta">
+              <a href="https://instagram.com/leeostyle" target="_blank" rel="noopener">@leeostyle</a>
+              <span class="dot"></span><span>Reñaca</span>
+            </div>
+          </div>
+        </header>
+        <figure class="client-media">
+          <img src="img/sofa_naranja.jpg" alt="Sofá modular naranja" loading="lazy">
+          <figcaption>Sofá modular · pana terracota</figcaption>
+        </figure>
+        <footer class="client-tags">
+          <span class="badge-soft">Residencial</span>
+          <span class="badge-soft">Diseño a medida</span>
+        </footer>
+      </article>
+
+      <!-- Cliente 3 -->
+      <article class="client-card" data-ani>
+         <header class="client-head">
+          <div class="client-avatar initials">MM</div>
+          <div>
+            <div class="client-name">mamaaltdah</div>
+            <div class="client-meta">
+              <a href="https://www.instagram.com/mamaaltdah/" target="_blank" rel="noopener">@mamaaltdah</a>
+              <span class="dot"></span><span>Nuñoa</span>
+            </div>
+          </div>
+        </header>
+        <figure class="client-media">
+          <img src="img/sillon_blanco.jpg" alt="Comedor 6 sillas tapizadas" loading="lazy">
+          <figcaption>Sillón blanco </figcaption>
+        </figure>
+        <footer class="client-tags">
+          <span class="badge-soft">Residencial</span>
+          <span class="badge-soft">Diseño a medidaz</span>
+        </footer>
+      </article>
+
+      <!-- Agrega más clientes repitiendo el patrón -->
+    </div>
+
+    <div class="text-center mt-4">
+      <a class="btn btn-outline-dark btn-sm rounded-pill"
+         href="https://www.instagram.com/stories/highlights/17864945918944147/"
+         target="_blank" rel="noopener">Ver más clientes en Instagram</a>
+    </div>
+  </div>
+</section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="py-6">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col" data-ani>
+          <h2 class="fw-bold">Testimonios</h2>
+        </div>
+      </div>
+      <div id="testi" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000" data-ani>
+        <div class="carousel-inner rounded-5 soft">
+          <div class="carousel-item active p-4">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-6">
+                <p class="quote mb-2">“El sofa quedó perfecto y se ve increíble. Cumplieron el plazo.”
+                </p>
+                <div class="text-warning small mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                <div class="small text-muted">Cliente de Santiago</div>
+              </div>
+              <div class="col-lg-6">
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden"><img src="/img/sofa_gaspar.jpg"
+                    alt="Seccional en living real" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item p-4">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-6">
+                <p class="quote mb-2">“La mesa de comedor quedó sólida y hermosa. Muy buena asesoría en medidas.”</p>
+                <div class="text-warning small mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                <div class="small text-muted">Cliente de Ñuñoa</div>
+              </div>
+              <div class="col-lg-6">
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden"><img src="/img/comedor.jpg"
+                    alt="Comedor nogal" /></div>
+              </div>
+            </div>
+          </div>
+
+       <div class="carousel-item p-4">
+  <div class="row g-4 align-items-center">
+    <div class="col-lg-6">
+      <p class="quote mb-2">“Muchas gracias!! Se ven espectacular!!! Se pasaron!”</p>
+      <div class="text-warning small mb-2">
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+      </div>
+      <div class="small text-muted">
+        Cliente de Angol
+        <!-- opcional: si quieres referenciar la mención -->
+        <!-- · <a href="https://instagram.com/ximeegana" target="_blank" rel="noopener">@ximeegana</a> -->
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="ratio ratio-16x9 rounded-4 overflow-hidden">
+        <img src="img/angol.jpg"
+             alt="Sillones blancos entregados en Angol" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testi" data-bs-slide="prev"><span
+            class="carousel-control-prev-icon" aria-hidden="true"></span><span
+            class="visually-hidden">Anterior</span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testi" data-bs-slide="next"><span
+            class="carousel-control-next-icon" aria-hidden="true"></span><span
+            class="visually-hidden">Siguiente</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-6 bg-paper">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col" data-ani>
+          <h2 class="fw-bold">Blog</h2>
+          <p class="text-muted">Consejos cortos para ayudarte a elegir.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-ani="left">
+          <article class="card h-100 border-0 soft rounded-5" itemscope itemtype="https://schema.org/BlogPosting">
+            <img src="/img/fondo-de-capas-con-textura-de-tela.jpg" class="card-img-top" alt="Tapices para sofás" loading="lazy"
+              itemprop="image" />
+            <div class="card-body">
+              <h3 class="h5 card-title" itemprop="headline">Tapices: bouclé, lino o velvet</h3>
+              <p class="card-text small text-muted" itemprop="description">Pros y cuidados para elegir el mejor según tu
+                uso diario.</p>
+              <a href="#contacto" class="link-dark small">Leer más →</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4" data-ani="zoom">
+          <article class="card h-100 border-0 soft rounded-5" itemscope itemtype="https://schema.org/BlogPosting">
+            <img src="img/sala-de-estar-minimalista-de-angulo-alto-con-chimenea.jpg" class="card-img-top" alt="Medidas para living" loading="lazy"
+              itemprop="image" />
+            <div class="card-body">
+              <h3 class="h5 card-title" itemprop="headline">Guía rápida de medidas</h3>
+              <p class="card-text small text-muted" itemprop="description">Ancho, profundidad y circulación para un
+                living cómodo.</p>
+              <a href="#contacto" class="link-dark small">Leer más →</a>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4" data-ani="right">
+          <article class="card h-100 border-0 soft rounded-5" itemscope itemtype="https://schema.org/BlogPosting">
+            <img src="/img/taller-de-grabado-en-madera-de-bodegones.jpg" class="card-img-top" alt="Maderas y terminaciones" loading="lazy"
+              itemprop="image" />
+            <div class="card-body">
+              <h3 class="h5 card-title" itemprop="headline">Maderas & terminaciones</h3>
+              <p class="card-text small text-muted" itemprop="description">Qué considerar para una mesa duradera y
+                estética.</p>
+              <a href="#contacto" class="link-dark small">Leer más →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Franja de lema + valores (paleta FranjaWood) -->
+<section class="py-4 fw-strip fw-colors">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <div class="fw-lema"><strong>Lema:</strong> “Imaginar y crear puede ser maravilloso.”</div>
+    <div class="values-badges d-flex flex-wrap gap-2 small">
+      <span class="fw-badge">Compromiso</span>
+      <span class="fw-badge">Confianza</span>
+      <span class="fw-badge">Profesionalismo</span>
+      <span class="fw-badge">Innovación</span>
+    </div>
+  </div>
+</section>
+
+ <!-- CONTACTO -->
+<section id="contacto" class="py-6">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col" data-ani>
+        <h2 class="fw-bold">Contacto</h2>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Formulario -->
+      <div class="col-lg-6" data-ani="left">
+        <form class="p-4 bg-white rounded-5 soft" action="#" method="post" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label small" for="c-nombre">Nombre</label>
+              <input id="c-nombre" name="nombre" type="text" class="form-control" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label small" for="c-correo">Correo</label>
+              <input id="c-correo" name="correo" type="email" class="form-control" placeholder="tu@correo.cl" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label small" for="c-telefono">Teléfono</label>
+              <input id="c-telefono" name="telefono" type="tel" class="form-control" placeholder="+56 9 ..." required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label small" for="c-servicio">Servicio</label>
+              <select id="c-servicio" name="servicio" class="form-select">
+                <option>Sofá / Seccional</option>
+                <option>Mesa / Comedor</option>
+                <option>Sillón / Butaca</option>
+                <option>Tapicería</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label small" for="c-mensaje">Mensaje</label>
+              <textarea id="c-mensaje" name="mensaje" class="form-control" rows="4" placeholder="Medidas, tela o referencia IG"></textarea>
+            </div>
+
+            <div class="col-12 d-flex gap-2">
+              <button type="submit" class="btn btn-dark"><i class="bi bi-send me-2"></i>Enviar</button>
+              <a class="btn btn-outline-dark"
+                 href="https://wa.me/56987654321?text=Hola%20FranjaWood%2C%20quiero%20cotizar"
+                 target="_blank" rel="noopener">
+                <i class="bi bi-whatsapp me-2"></i>WhatsApp
+              </a>
+            </div>
+
+            <p class="small text-muted mt-2 mb-0">
+              <i class="bi bi-shield-check me-1"></i>Usamos tus datos sólo para responder.
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Información + Mapa -->
+      <div class="col-lg-6" data-ani="right">
+        <div class="p-4 bg-paper rounded-5 h-100 border">
+          <h5 class="fw-semibold">Información</h5>
+
+          <ul class="list-unstyled small mt-3">
+            <li class="mb-2">
+              <i class="bi bi-telephone me-2 text-accent"></i>
+              <a class="link-dark" href="tel:+56987654321">+56 9 8765 4321</a>
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-whatsapp me-2 text-accent"></i>
+              <a class="link-dark" href="https://wa.me/56987654321" target="_blank" rel="noopener">WhatsApp</a>
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-envelope me-2 text-accent"></i>
+              <a class="link-dark" href="mailto:hola@franjawood.cl">hola@franjawood.cl</a>
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-geo-alt me-2 text-accent"></i>
+              Av. Ejemplo 1234, Santiago, Chile
+            </li>
+            <li>
+              <i class="bi bi-clock me-2 text-accent"></i>
+              Lun a Vie, 10:00–18:00
+            </li>
+          </ul>
+
+          <hr>
+
+          <p class="small text-muted mb-3">
+            Comparte un link de Instagram o una foto de referencia para cotizar más rápido.
+          </p>
+
+          <!-- Mapa responsive -->
+          <div class="ratio ratio-16x9 rounded-4 overflow-hidden border">
+            <iframe
+              title="Ubicación FranjaWood"
+              src="https://www.google.com/maps?q=Av.%20Ejemplo%201234%2C%20Santiago%2C%20Chile&output=embed&hl=es"
+              style="border:0;" allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div class="mt-2">
+            <a class="small link-dark text-decoration-underline"
+               href="https://www.google.com/maps?q=Av.%20Ejemplo%201234%2C%20Santiago%2C%20Chile"
+               target="_blank" rel="noopener">
+              Abrir en Google Maps
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer id="footer" class="pt-5 fw-footer">
+  <div class="container pb-4">
+    <div class="row g-4">
+      <!-- Sobre -->
+      <div class="col-md-6 col-lg-3">
+        <h6 class="text-light">Sobre FranjaWood</h6>
+        <p class="text-footer">
+          Fabricamos sofás, seccionales y comedores a medida en Santiago.
+          Tapices premium, construcción sólida y despacho a todo Chile.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-md-6 col-lg-3">
+        <h6 class="text-light">Contáctanos</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-1">
+            <i class="bi bi-geo-alt me-2"></i>
+            Av. Ejemplo 1234, Santiago, Chile
+          </li>
+          <li class="mb-1">
+            <i class="bi bi-telephone me-2"></i>
+            <a class="link-footer" href="tel:+56987654321">+56 9 8765 4321</a>
+          </li>
+          <li class="mb-1">
+            <i class="bi bi-envelope me-2"></i>
+            <a class="link-footer" href="mailto:hola@franjawood.cl">hola@franjawood.cl</a>
+          </li>
+          <li class="mb-1">
+            <i class="bi bi-whatsapp me-2"></i>
+            <a class="link-footer" href="https://wa.me/56987654321?text=Hola%20FranjaWood%2C%20quiero%20cotizar" target="_blank" rel="noopener">WhatsApp</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links -->
+      <div class="col-md-6 col-lg-3">
+        <h6 class="text-light">Links</h6>
+        <ul class="list-unstyled small">
+          <li><a class="link-footer" href="#servicios">Servicios</a></li>
+          <li><a class="link-footer" href="#nosotros">Nosotros</a></li>
+          <li><a class="link-footer" href="#resultados">Resultados</a></li>
+          <li><a class="link-footer" href="#clientes">Clientes</a></li>
+          <li><a class="link-footer" href="#testimonios">Testimonios</a></li>
+          <li><a class="link-footer" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Mapa -->
+      <div class="col-md-6 col-lg-3">
+        <h6 class="text-light">Dónde estamos</h6>
+        <div class="ratio ratio-4x3 rounded-3 overflow-hidden shadow-soft">
+          <iframe
+            title="Ubicación FranjaWood"
+            src="https://www.google.com/maps?q=Av.%20Ejemplo%201234%2C%20Santiago%2C%20Chile&z=16&output=embed&hl=es"
+            style="border:0;" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <small class="text-footer d-block mt-2">
+          Av. Ejemplo 1234, Santiago, Chile
+        </small>
+      </div>
+    </div>
+
+    <hr class="border-footer my-4" />
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pb-4 small text-footer">
+      <div>© <span id="y"></span> FranjaWood. Todos los derechos reservados.</div>
+      <div class="d-flex gap-3">
+        <a class="link-footer" href="#">Privacidad</a>
+        <a class="link-footer" href="#">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- WHATSAPP FLOAT -->
+  <!-- WHATSAPP FLOAT (FAB mejorado) -->
+  <div class="whatsapp-float">
+    <a class="whatsapp-fab" href="https://wa.me/56987654321?text=Hola%20FranjaWood%2C%20quiero%20cotizar"
+      target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+      <i class="bi bi-whatsapp"></i>
+    </a>
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Navbar: sombra al hacer scroll
+    const nav = document.querySelector('.navbar');
+    const onScroll = () => { window.scrollY > 6 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled'); };
+    onScroll(); window.addEventListener('scroll', onScroll);
+
+    // IntersectionObserver: revelar elementos al entrar
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('[data-ani], .metric').forEach(el => io.observe(el));
+
+    // Contadores con "pop"
+    const startCount = (el) => {
+      const t = +el.getAttribute('data-count'); if (!t) return;
+      let c = 0; const step = Math.ceil(t / 60);
+      const id = setInterval(() => {
+        c += step;
+        if (c >= t) { c = t; clearInterval(id); }
+        el.textContent = c.toLocaleString('es-CL');
+      }, 20);
+    };
+    document.querySelectorAll('[data-count]').forEach(el => {
+      io.observe(el);
+      el.addEventListener('transitionend', () => startCount(el), { once: true });
+    });
+
+    // Typewriter suave en el H1 del primer slide
+    (function () {
+      const el = document.getElementById('hero-title-1');
+      if (!el) return;
+      const text = 'Sofás y seccionales a medida';
+      let i = 0;
+      const tick = () => {
+        el.textContent = text.slice(0, i++);
+        if (i <= text.length) setTimeout(tick, 35);
+        else el.classList.remove('typewriter'); // deja de parpadear el caret al terminar
+      };
+      // espera pequeño para que el slider monte
+      setTimeout(tick, 350);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // Formatea miles (1.234, 12.345, etc.) en es-CL
+      const fmt = (n, dec = 0) => new Intl.NumberFormat('es-CL', { minimumFractionDigits: dec, maximumFractionDigits: dec }).format(n);
+
+      function animateCount(el) {
+        const target = parseFloat(el.dataset.count || '0');
+        const dur = parseInt(el.dataset.duration || '1200', 10);
+        const dec = parseInt(el.dataset.decimals || '0', 10);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const start = 0;
+        const startT = performance.now();
+
+        function tick(now) {
+          const p = Math.min(1, (now - startT) / dur);
+          // easing suave
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = start + (target - start) * eased;
+
+          // si hay sufijo "K" o "M" puedes forzarlo aquí (para el ejemplo usamos sufijo literal)
+          el.textContent = prefix + fmt(val, dec) + suffix;
+
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = prefix + fmt(target, dec) + suffix; // final exacto
+        }
+        requestAnimationFrame(tick);
+      }
+
+      // Observa y dispara una sola vez por métrica
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const box = e.target;
+          box.classList.add('in');
+          const h3 = box.querySelector('h3[data-count]');
+          if (h3 && !h3.dataset.done) {
+            h3.dataset.done = '1';
+            animateCount(h3);
+          }
+          io.unobserve(box);
+        });
+      }, { threshold: .25, rootMargin: '0px 0px -10% 0px' });
+
+      document.querySelectorAll('.metric').forEach(m => io.observe(m));
+    })();
+  </script>
+  <script>
+    // Asegúrate de tener Bootstrap JS cargado
+    document.addEventListener('DOMContentLoaded', function () {
+      const modalEl = document.getElementById('resultadoModal');
+      const imgEl = document.getElementById('resultadoImg');
+      const titleEl = document.getElementById('resultadoTitulo');
+      const altEl = document.getElementById('resultadoAlt');
+      const modal = new bootstrap.Modal(modalEl);
+
+      document.querySelectorAll('.grid .tile').forEach(tile => {
+        tile.addEventListener('click', function (e) {
+          e.preventDefault();
+          const img = this.querySelector('img');
+          const caption = this.querySelector('.caption')?.textContent?.trim() || '';
+          const src = img.dataset.full || img.src; // usa data-full si existe
+
+          imgEl.src = src;
+          imgEl.alt = img.alt || caption;
+          titleEl.textContent = caption || 'Vista previa';
+          altEl.textContent = img.alt || '';
+
+          modal.show();
+        });
+      });
+
+      // Limpia al cerrar para liberar memoria (opcional)
+      modalEl.addEventListener('hidden.bs.modal', () => { imgEl.src = ''; });
+    });
+  </script>
+
+</body>
+
+</html>
